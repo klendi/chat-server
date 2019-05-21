@@ -7,10 +7,7 @@ const io = require('socket.io')(http)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 let users = []
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html')
-})
+const PORT = process.env.PORT || 5000
 
 io.on('connection', socket => {
   socket.on('message', data => {
@@ -36,6 +33,6 @@ io.on('connection', socket => {
   }
 })
 
-const server = http.listen(5000, () => {
-  console.log('Server is running')
+const server = http.listen(PORT, () => {
+  console.log('Server is running at port ', PORT)
 })
