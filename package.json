@@ -4,7 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node server.js"
+    "dev": "nodemon --exec babel-node server.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-server": "babel -d ./build server.js",
+    "build": "npm run clean && npm run build-server",
+    "start": "npm run build && npm run start-server",
+    "start-server": "node ./build/server.js"
   },
   "author": "Klendi Gocci",
   "license": "ISC",
