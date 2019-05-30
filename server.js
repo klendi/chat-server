@@ -15,7 +15,7 @@ io.on('connection', socket => {
   })
 
   socket.on('join', data => {
-    console.log('got a data', data)
+    console.log('got a entry', data)
     socket.user = data
     users.push(socket.user)
     io.emit('userJoined', data)
